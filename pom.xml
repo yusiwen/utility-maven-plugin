@@ -10,6 +10,7 @@
     <packaging>maven-plugin</packaging>
     <name>utility-maven-plugin</name>
     <description>My maven utility plugin</description>
+    <url>https://github.com/yusiwen/utility-maven-plugin</url>
 
     <prerequisites>
         <maven>${maven.api.version}</maven>
