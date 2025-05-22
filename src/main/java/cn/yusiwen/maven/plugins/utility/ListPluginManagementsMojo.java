@@ -63,8 +63,12 @@ public class ListPluginManagementsMojo extends AbstractMojo {
             }
 
             if (!plugin.getDependencies().isEmpty()) {
-                info.append("\n  Dependencies: ")
-                        .append(plugin.getDependencies().size());
+                info.append("\n  Dependencies: ");
+                plugin.getDependencies()
+                        .forEach(d -> info.append("\n    - ")
+                                .append(d.getGroupId()).append(":")
+                                .append(d.getArtifactId()).append(":")
+                                .append(d.getVersion()));
             }
             info.append("\n");
         }

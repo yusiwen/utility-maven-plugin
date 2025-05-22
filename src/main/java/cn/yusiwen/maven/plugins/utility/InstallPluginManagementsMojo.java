@@ -16,8 +16,8 @@ import org.apache.maven.shared.transfer.dependencies.resolve.DependencyResolver;
 import org.apache.maven.shared.transfer.dependencies.resolve.DependencyResolverException;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Mojo(name = "install-pluginManagements")
 public class InstallPluginManagementsMojo extends AbstractMojo {
@@ -62,23 +62,23 @@ public class InstallPluginManagementsMojo extends AbstractMojo {
 
     }
 
-    private List<DependableCoordinate> toCoordinate(Plugin plugin) {
-        List<DependableCoordinate> list = new ArrayList<>();
+    private Set<DependableCoordinate> toCoordinate(Plugin plugin) {
+        Set<DependableCoordinate> set = new HashSet<>();
         DefaultDependableCoordinate pluginCoordinate = new DefaultDependableCoordinate();
         pluginCoordinate.setArtifactId(plugin.getArtifactId());
         pluginCoordinate.setGroupId(plugin.getGroupId());
         pluginCoordinate.setVersion(resolveVersion(plugin));
-        list.add(pluginCoordinate);
+        set.add(pluginCoordinate);
 
         plugin.getDependencies().forEach(d -> {
             DefaultDependableCoordinate dc = new DefaultDependableCoordinate();
-            dc.setArtifactId(plugin.getArtifactId());
-            dc.setGroupId(plugin.getGroupId());
-            dc.setVersion(resolveVersion(plugin));
-            list.add(dc);
+            dc.setArtifactId(d.getArtifactId());
+            dc.setGroupId(d.getGroupId());
+            dc.setVersion(d.getVersion());
+            set.add(dc);
         });
 
-        return list;
+        return set;
     }
 
     private String resolveVersion(Plugin plugin) {
