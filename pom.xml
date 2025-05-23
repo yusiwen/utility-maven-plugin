@@ -4,7 +4,7 @@
 
     <groupId>cn.yusiwen.maven.plugins</groupId>
     <artifactId>utility-maven-plugin</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0.M4</version>
     <packaging>maven-plugin</packaging>
     <name>utility-maven-plugin</name>
     <description>My maven utility plugin</description>
@@ -24,7 +24,7 @@
         <connection>scm:git:ssh://git@github.com/yusiwen/utility-maven-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/yusiwen/utility-maven-plugin.git</developerConnection>
         <url>https://github.com/yusiwen/utility-maven-plugin</url>
-        <tag>HEAD</tag>
+        <tag>1.0.0.M4</tag>
     </scm>
     <developers>
         <developer>
